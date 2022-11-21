@@ -14,9 +14,9 @@
             "optional": null
           },
           "location": {
-            "required": [{
+            "required": {
               "$ref": "#/$defs/task_ids/location/us_states"
-            }],
+            },
             "optional": ["US"]
           },
           "target": {
@@ -71,9 +71,9 @@
             "optional": null
           },
           "location": {
-            "required": [{
+            "required": {
               "$ref": "#/$defs/task_ids/location/us_states"
-            }],
+            },
             "optional": ["US"]
           },
           "target": {
@@ -119,9 +119,9 @@
             "optional": [2, 3]
           },
           "location": {
-            "required": [{
+            "required": {
               "$ref": "#/$defs/task_ids/location/us_states"
-            }],
+            },
             "optional": ["US"]
           },
           "target": {
