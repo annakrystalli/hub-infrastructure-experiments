@@ -30,10 +30,7 @@
         },
         "output_types": {
           "mean": {
-            "type_id": {
-              "required": null,
-              "optional": ["NA"]
-            },
+            "type_id":  ["NA"],
             "value": {
               "type": "integer",
               "minimum": 0
@@ -96,7 +93,8 @@
             },
             "value": {
               "type": "numeric",
-              "minimum": 0
+              "minimum": 0,
+              "maximum": 1
             }
           }
         }
@@ -147,7 +145,8 @@
             },
             "value": {
               "type": "integer",
-              "minimum": 0
+              "minimum": 0,
+              "maximum": 1
             }
           }
         }
