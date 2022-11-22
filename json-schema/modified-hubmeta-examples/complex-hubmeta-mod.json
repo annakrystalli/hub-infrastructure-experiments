@@ -1,6 +1,7 @@
 {
  "rounds": [
  {
+  "round_id_from_variable": false,
   "round_id": "round-1",
     "model_tasks": [
       {
@@ -30,12 +31,9 @@
         },
         "output_types": {
           "mean": {
-            "type_id": {
-              "required": null,
-              "optional": ["NA"]
-            },
+            "type_id":  ["NA"],
             "value": {
-              "type": "integer",
+              "type": "numeric",
               "minimum": 0
             }
           },
@@ -96,7 +94,8 @@
             },
             "value": {
               "type": "numeric",
-              "minimum": 0
+              "minimum": 0,
+              "maximum": 1
             }
           }
         }
@@ -109,6 +108,7 @@
   },
  {
   "round_id": "round-2",
+  "round_id_from_variable": false,
     "model_tasks": [
       {
         "task_ids": {
@@ -146,8 +146,9 @@
               "optional": [0.1, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8, 0.9]
             },
             "value": {
-              "type": "integer",
-              "minimum": 0
+              "type": "numeric",
+              "minimum": 0,
+              "maximum": 1
             }
           }
         }

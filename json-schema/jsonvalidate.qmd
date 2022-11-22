@@ -92,3 +92,59 @@ validator(complex_mod_path, verbose = TRUE) |>
 ```
 
 The 3 errors still present when validating the complex hubmeta arises from the fact that I've not figure out values which either should be a typed array or could contain a `"$ref" = "#defs"` value key pair. Given this functionality should be available to any property, I need to figure out how to encode that in the schema (rather than to each property individually).
+
+### Experiments to address `$ref` validation
+
+For context see https://github.com/Infectious-Disease-Modeling-Hubs/schemas/issues/1
+
+```{r, error=TRUE}
+
+# Read JSON into an R list
+complex_mod_path <- here::here("json-schema", 
+                               "modified-hubmeta-examples", 
+                               "complex-hubmeta-mod.json")
+json_list <- jsonlite::read_json(complex_mod_path,
+                                 simplifyVector = TRUE,
+                                 simplifyDataFrame = FALSE
+) 
+
+# Attempt at serialising without unboxing. 
+# All vectors serialised as arrays
+json_list |> jsonlite::toJSON(
+    null = "null",
+    na = "string",
+    pretty = TRUE
+)
+
+# Attempt at serialising with unboxing. 
+# All 1 length vectors serialised as single values
+json_list |> jsonlite::toJSON(
+    null = "null",
+    na = "string",
+    pretty = TRUE,
+    auto_unbox = TRUE
+)
+
+
+# Read JSON into an R list
+complex_mod_path <- here::here("json-schema", 
+                               "modified-hubmeta-examples", 
+                               "complex-hubmeta-mod.json")
+json_list <- jsonlite::read_json(complex_mod_path,
+                                 simplifyVector = TRUE,
+                                 simplifyDataFrame = FALSE
+) 
+
+# Create new schema instance
+schema <- jsonvalidate::json_schema$new(
+    schema = here::here("json-schema", "hubmeta-schema.json"),
+    engine = "ajv")
+
+# Use Schema to serialise list to JSON
+json <- schema$serialise(json_list)
+
+# Use Schema to validate JSON
+schema$validate(json)
+
+```
+

@@ -83,7 +83,21 @@
                             "null"
                           ],
                           "items": {
-                            "type": "string"
+                            "oneOf": [{
+                                "type": "string"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "patternProperties": {
+                                    "^$ref": {
+                                      "type": "string",
+                                      "format": "json-pointer"
+                                    }
+                                  }
+                                }
+                              }
+                            ]
                           }
                         },
                         "optional": {
